@@ -1,0 +1,216 @@
+$(document).foundation();
+
+String.prototype.times = function(n) {
+  return Array.prototype.join.call({length: n+1}, this);
+}; 
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}
+
+function reject33(result){
+  return result == 33 ? getRandomInt(34, 254) : result;
+}
+function endGame(level, time){
+  setTimeout(function(){
+    $("#gui #visionquest").hide();
+    $.ajax({
+      url: '/vq/' + level.toString(),
+      type: "put"
+    });
+  }, time);
+}
+
+function initGame(){
+  var visionTimer, startTime, countAmt, interval, level, elapsed;
+  var deg = [45, 42, 41, 41, 40, 38, 37, 36, 34, 30, 27, 27, 26, 25, 25, 24, 24, 23, 23, 22, 21, 21, 21, 20, 18, 18, 18, 18, 17, 16, 15, 15, 15,14,13, 12, 12, 12, 11, 11, 10, 9, 9, 8, 7, 7, 6, 3, 3, 2,1];
+
+  level = 1;
+
+  function nextLevel(){
+    if (level <= 49){
+      level = level+1;
+      $("#level").html(level);
+      if (level <= 1) {
+        up = 2;
+      }else if(level <= 4){
+        up = 3;
+      }else if( level <= 8){
+        up = 4;
+      }else if(level <= 13){
+        up = 5;
+      }else if(level <= 22){
+        up = 6;
+      }else if(level <= 32){
+        up = 7;
+      }else if(level <= 36){
+        up = 9;
+      }else if(level <= 47){
+        up = 10;
+      }else if(level <= 49){
+        up = 11;
+      }else{
+        up = 12;
+      }
+      degree = deg[level-1];
+      createLayout(up,degree);
+    }else{
+      $("#level").html("WOW!");
+      $("#counter").addClass("hide");
+      endGame(level, 1200);
+    }
+  }
+
+  function now() {
+    return ((new Date()).getTime());
+  }
+
+  function tick() {
+    elapsed = now() - startTime;
+    var cnt = Math.round((countAmt - elapsed)/1000);
+    if (cnt > 0) {
+      if(cnt <= 3){
+        cnt = ((countAmt - elapsed)/1000).toFixed(2);
+        $("#counter").addClass("danger");
+      }
+      if(cnt < 10){
+        $("#minus3,#minus1").removeClass("adjust");
+      }
+      $("#timer").html(cnt);
+    } else{
+      $("#timer").html("0");
+      clearInterval(interval);
+      endGame(level, 1200);
+    }
+  }
+
+  function startTimer(secs) {
+    $("#counter").removeClass("danger");
+    clearInterval(interval);
+    $("#timer").html(secs);
+    countAmt = secs * 1000;
+    startTime = now();
+    interval = setInterval(tick, 50);
+  }
+
+  function getRandomColor(){
+     r = getRandomInt(1, 254);
+     g = getRandomInt(1, 254);
+     b = getRandomInt(1, 254);
+     r = reject33(r);
+     g = reject33(g);
+     return r+","+g+","+b;
+  }
+
+  function colorShift(c,amt){
+    if (c >= amt){
+      // console.log("c is "+c+", amt is: "+amt+". RESULT:"+(c-amt));
+      return c - amt;
+    }else{
+      var i;
+      for (i = amt; i > 1; i--){
+        // console.log("cycle "+c);
+        if(c >= i){
+          break;
+        }
+      }
+      // console.log("c is "+c+", amt should've been "+amt+". Is now "+i+". RESULT:"+(c-i));
+      return c - i;
+    }
+  }
+
+  function shiftColor(c,amt){
+    if (amt <= 5 ){
+      if (amt <=2){
+        return shiftColorHarder(c,amt);
+      }else{
+        return shiftColorHard(c,amt);
+      }
+    }else{
+      var arr = c.split(',');
+      r = colorShift(arr[0],amt);
+      g = colorShift(arr[1],amt);
+      b = colorShift(arr[2],amt);
+      return r+","+g+","+b;
+    }
+  }
+
+  function shiftColorHard(c,amt){
+    var arr = c.split(',');
+    r = colorShift(arr[0],amt);
+    g = arr[1];
+    b = colorShift(arr[2],amt);
+    return r+","+g+","+b;
+  }
+  function shiftColorHarder(c,amt){
+    var arr = c.split(',');
+    r = arr[0];
+    g = arr[1];
+    b = colorShift(arr[2],amt);
+    return r+","+g+","+b;
+  }
+
+  var rmClass = function(){
+    $("#level").removeClass("pop");
+    $("#counter").removeClass("danger");
+  };
+  function reBound(){
+    $(".correct").on("click",function(){
+      $("#level").addClass("pop");
+      $("#counter").addClass("danger");
+      setTimeout(rmClass, 500);
+      nextLevel();
+    });
+    $(".tile:not(.correct)").on("click",function(){
+      if ((countAmt - elapsed) <= 3000){
+        startTimer(0);
+      }else{
+        newTime = Math.round(((countAmt - elapsed) - 3000)/1000);
+        startTimer(newTime);
+      }
+      $("#counter").addClass("blink");
+      $("#minus3").addClass("fire");
+      setTimeout(function(){
+        $("#counter").removeClass("blink");
+      }, 150);
+      setTimeout(function(){
+        $("#minus3").removeClass("fire");
+      }, 400);
+    });
+  }
+  function createLayout(n,amt){
+    $("#info").html(amt);
+    startTimer(14);
+    blockGrid = 'small-up-'+n;
+    total = n*n;
+    cutoff=getRandomInt(1, total);
+    part1 = total-cutoff;
+    part2 = total-part1-1;
+    rgb = getRandomColor();
+    shift = shiftColor(rgb,amt);
+    tiles1 = ('<div class="column"><div class="tile" style="background:rgb('+rgb+')"></div></div>').times(part1);
+    answer = ('<div class="column"><div class="tile correct" style="background:rgb('+shift+')"></div></div>');
+    tiles2 = ('<div class="column"><div class="tile" style="background:rgb('+rgb+')"></div></div>').times(part2);
+    tile = tiles1+answer+tiles2;
+    $("#game").removeClass().addClass(blockGrid).html(tile);
+    reBound();
+  }
+  createLayout(2,50);
+}
+
+function vqStart() {
+  $("#gui #intro").hide();
+  $("#gui #visionquest").show();
+  $("#gui #result").hide();
+  initGame();  
+}
+
+$(document).ajaxSend(function(e, xhr) {
+  $("#spinner-container").show();
+  var token = $("meta[name='csrf-token']").attr("content");
+  xhr.setRequestHeader("X-CSRF-Token", token);
+});
+
+$(document).ajaxComplete(function(e, xhr) {
+  $("#spinner-container").hide();
+});

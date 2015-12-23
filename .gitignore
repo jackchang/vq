@@ -1,0 +1,27 @@
+# Ignore bundler config
+/.bundle
+
+# Ignore the yml.
+config/database.yml
+config/application.yml
+
+# Ignore all logfiles and tempfiles.
+log/*.log
+*.rbc
+*.sassc
+.sass-cache
+capybara-*.html
+.rspec
+/.bundle
+/vendor/bundle
+/tmp/*
+/db/*.sqlite3
+/public/system/*
+/coverage/
+/spec/tmp/*
+rerun.txt
+pickle-email-*.html
+.DS_Store
+/public/assets/*
+coverage/index.html
+tags/

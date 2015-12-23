@@ -1,0 +1,13 @@
+== README
+
+* Rails 4.2.5 Ruby 2.2.1
+
+* System dependencies: Postgres
+
+* Configuration -- bundle install
+
+* Database creation -- rake db:create
+
+* Database initialization -- rake db:mgrate, rake db:seed
+
+* Development: set up pow

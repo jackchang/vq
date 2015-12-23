@@ -1,0 +1,35 @@
+<div class="gameresult">
+  <% unless  @record.nil? %>
+    <div style="color: #eee"> 
+      Your position: <%= number_with_delimiter(@position[0]) %> &nbsp;&nbsp;
+      Percentile: <%= @position[2] > 50 ? "Bottom" : "Top" %> <%= number_with_precision(@position[2], :precision => 2) %> %  
+    </div >
+    <div style="color: #eee"> 
+      <% if @record.count > 1 %>
+        <%= @record.count - 1 %> other people are in the same level
+      <% else %>
+        You are the first one to reach this level
+      <% end %>
+    </div>
+    <dl>
+    <dt>
+      Stats
+    </dt>
+    <% Hash[@groups.to_a.reverse].each do |k,v| %>
+      <% percentInt = v[1].to_i %>
+      <% if @position[1] == k %>
+      <dd class="percentage-selected percentage-<%= percentInt %>">
+      <% else %>
+      <dd class="percentage percentage-<%= percentInt %>">
+      <% end %>
+        <span class="text">
+          <%= VRecord::GROUP[k] %>
+        </span>
+        <span class="stats">
+          <%= number_with_delimiter(v[0]) %> people
+        </span>
+      </dd>
+    <% end %>
+    </dl>
+  <% end %>
+</div>

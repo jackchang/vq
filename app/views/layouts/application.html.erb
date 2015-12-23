@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html class="no-js" lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta http-equiv="x-ua-compatible" content="ie=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Vision Quest</title>
+    <meta name="description" content="Infinite Lunch | Makers of VisionQuest | Come and Play!">
+    <link rel="apple-touch-icon" href="<%= image_url('apple-touch-icon.png') %>"> <!-- TODO: Change to correct URL -->
+    <meta property="og:title" content="Infinite Lunch">
+    <meta property="og:type" content="website">
+    <meta property="og:image" content="http://rightintheface.com/vq/img/visionquest-facebook.png"> <!-- TODO: Change to correct absolute URL -->
+    <meta property="og:url" content="http://rightintheface.com/vq/"> <!-- TODO: Change to correct absolute URL -->
+    <meta property="og:description" content="Infinite Lunch | Makers of VisionQuest | Come and Play!">
+    <meta name="twitter:url" content="http://rightintheface.com/vq/"> <!-- TODO: Change to correct absolute URL -->
+    <meta name="twitter:title" content="Vision Quest">
+    <meta name="twitter:description" content="Infinite Lunch | Makers of VisionQuest | Come and Play!">
+    <meta name="twitter:image" content="http://rightintheface.com/vq/img/visionquest-twitter.png"> <!-- TODO: Change to correct absolute URL -->
+    <meta content="width=device-width, initial-scale=1.0" name="viewport">
+  <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
+  <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
+  <%= csrf_meta_tags %>
+  </head>
+  <body class="invert">
+    <div class="row full-width" id="banner-container">
+      <div id="banner">
+        <!-- TODO: Responsive Banner ad goes here --> 
+      </div>
+    </div>
+    <div id="spinner-container" class="hide">
+      <div class="spinner">
+        <div></div><div></div><div></div><div></div>
+      </div>
+    </div>
+    <%= yield %>
+    
+    <%= render 'fb_share' %>
+    <script>
+      $(document).foundation();
+    </script>
+  </body>
+</html>
