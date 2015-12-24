@@ -6,30 +6,45 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>Vision Quest</title>
     <meta name="description" content="Infinite Lunch | Makers of VisionQuest | Come and Play!">
-    <link rel="apple-touch-icon" href="<%= image_url('apple-touch-icon.png') %>"> <!-- TODO: Change to correct URL -->
+    <link rel="apple-touch-icon" href="<%= image_url('apple-touch-icon.png') %>">
     <meta property="og:title" content="Infinite Lunch">
     <meta property="og:type" content="website">
-    <meta property="og:image" content="http://rightintheface.com/vq/img/visionquest-facebook.png"> <!-- TODO: Change to correct absolute URL -->
-    <meta property="og:url" content="http://rightintheface.com/vq/"> <!-- TODO: Change to correct absolute URL -->
+    <meta property="og:image" content="<%= image_url('visionquest-facebook.png') %>">
+    <meta property="og:url" content="http://infinitelunch.com">
     <meta property="og:description" content="Infinite Lunch | Makers of VisionQuest | Come and Play!">
-    <meta name="twitter:url" content="http://rightintheface.com/vq/"> <!-- TODO: Change to correct absolute URL -->
+    <meta name="twitter:url" content="http://infinitelunch.com">
     <meta name="twitter:title" content="Vision Quest">
     <meta name="twitter:description" content="Infinite Lunch | Makers of VisionQuest | Come and Play!">
-    <meta name="twitter:image" content="http://rightintheface.com/vq/img/visionquest-twitter.png"> <!-- TODO: Change to correct absolute URL -->
+    <meta name="twitter:image" content="<%= image_url('visionquest-twitter.png') %>">
     <meta content="width=device-width, initial-scale=1.0" name="viewport">
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   </head>
   <body class="invert">
+    <!-- Google Tag Manager
+    <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHH58V"
+    height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+    <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+    new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+    j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+    '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+    })(window,document,'script','dataLayer','GTM-PHH58V');</script>
+     End Google Tag Manager -->
+
     <div class="row full-width" id="banner-container">
       <div id="banner">
+        <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+        <!-- Responsive-Template -->
         <ins class="adsbygoogle"
           style="display:block"
           data-ad-client="ca-pub-2637858743301173"
           data-ad-slot="1872190048"
           data-ad-format="auto">
         </ins>
+        <script>
+          (adsbygoogle = window.adsbygoogle || []).push({});
+        </script>
       </div>
     </div>
     <div id="spinner-container" class="hide">
@@ -40,10 +55,19 @@
     <%= yield %>
     
     <%= render 'fb_share' %>
+
     <script>
-      (adsbygoogle = window.adsbygoogle || []).push({});
       $(document).foundation();
     </script>
-    <script async src="//pagead2.googlesyndication.com/pagead/js/adsbygoogle.js"></script>
+
+    <script>
+      (function(i,s,o,g,r,a,m){i['GoogleAnalyticsObject']=r;i[r]=i[r]||function(){
+      (i[r].q=i[r].q||[]).push(arguments)},i[r].l=1*new Date();a=s.createElement(o),
+      m=s.getElementsByTagName(o)[0];a.async=1;a.src=g;m.parentNode.insertBefore(a,m)
+      })(window,document,'script','//www.google-analytics.com/analytics.js','ga');
+
+      ga('create', 'UA-71723528-1', 'auto');
+      ga('send', 'pageview');
+    </script>
   </body>
 </html>
