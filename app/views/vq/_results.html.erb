@@ -15,9 +15,15 @@
         </div>
       </div>
       <br/>
-      <a class="button" href="#" onclick="vqStart(); return false;">
-        <strong><%= @ref.blank? ? 'Try again!' : 'Join the game' %></strong>
-      </a>
+      <% if @ref.blank? %>
+        <a class="button" href="#" onclick="vqStart(); return false;">
+          <strong>Try again!</strong>
+        </a>
+      <% else %>
+        <a class="button" href="<%= root_url %>">
+          <strong>Join the game</strong>
+        </a>
+      <% end %>
       <br/>
 
       <div id="fb-share-container">
