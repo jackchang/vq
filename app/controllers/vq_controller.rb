@@ -3,7 +3,8 @@ class VqController < ApplicationController
     if params[:ref].present?
       ref = params[:ref].tr(VRecord::ENC, VRecord::DEC).split(':')[1]
       if ref.is_number?
-        @level = ref.to_i 
+        @ref = ref
+        @level = ref.to_i + 1
         @record = VRecord.find_by_level(@level)
         @position = find_position(@level)
         @groups = group_percentage

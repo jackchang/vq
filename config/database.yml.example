@@ -7,12 +7,12 @@ default: &default
 
 development:
   <<: *default
-  database: games_development
+  database: vq_development
 
 # Do not set this db to the same as development or production.
 test:
   <<: *default
-  database: games_test
+  database: vq_test
 
 # As with config/secrets.yml, you never want to store sensitive information,
 # like your database password, in your source code. If your source code is
@@ -35,6 +35,6 @@ test:
 #
 production:
   <<: *default
-  database: games_production
-  username: games
+  database: vq_production
+  username: rails
   password: <%= ENV['GAMES_DATABASE_PASSWORD'] %>

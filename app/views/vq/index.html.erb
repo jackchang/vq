@@ -1,11 +1,11 @@
 <div class="row" id="gui">
-  <div id="intro">
+  <div id="intro" style="<%= @ref.blank? ? '' : 'display:none' %>">
    <%= render 'intro' %>
   </div>
   <div id="visionquest" style="display: none;">
     <%= render 'visionquest' %>
   </div>
-  <div id="result" style="display: none;">
+  <div id="result" style=a<%= @ref.blank? ? 'display:none' : '' %>">
     <%= render 'results' %>
   </div>
   <div class="medium-4 medium-push-4 columns">

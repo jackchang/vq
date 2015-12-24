@@ -1,4 +1,4 @@
-  <% unless  @record.nil? %>
+  <% unless @record.nil? %>
   <div id="score-board" class="row">
     <div id="counter" class="small-6 columns"></div>
   </div>
@@ -10,13 +10,13 @@
           <p>LEVEL</p>
           <h1 id="user-level"><%= @level.to_i - 1 %></h1>
           <p>You're In</p>
-          <h3><div id="placement"><%= number_with_delimiter(@position[0]) %></div></h3>
+          <h3><div id="placement"><%= @position[0].ordinalize %></div></h3>
           <p>Place!</p>
         </div>
       </div>
       <br/>
       <a class="button" href="#" onclick="vqStart(); return false;">
-        <strong>Try again!</strong>
+        <strong><%= @ref.blank? ? 'Try again!' : 'Join the game' %></strong>
       </a>
       <br/>
 
