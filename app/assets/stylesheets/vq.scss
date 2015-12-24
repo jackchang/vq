@@ -159,7 +159,6 @@
 .button:hover, .button:active,.button:visited {
   background:#d6008f;
 }
-
 .hide{ visibility:hidden; }
 #spinner-container{
   z-index:4;
@@ -330,7 +329,7 @@ h5.blog-title{
   z-index:-1;
   position:absolute;
   left:50%;
-  top:36px;
+  top:47px;
   margin-left:-50%;
   margin-top:-50%;
   width:100%;
@@ -426,7 +425,8 @@ h5.blog-title{
 }
 #game{
   z-index:1;
-  padding: 0;
+  padding: 0 0 100%;
+  margin-bottom:40px;
 }
 .game-over{
   pointer-events:none;
@@ -436,6 +436,10 @@ h5.blog-title{
 }
 .game-over #counter{
   opacity:.2;
+}
+#fb-share-container{
+  text-align:center;
+  margin-top:6px;
 }
 .game-over .correct{
   -webkit-animation: BLINK 2.2s cubic-bezier(1,0,.2,.78) 0s 1; /* Safari 4+ */
@@ -456,7 +460,4 @@ h5.blog-title{
      -moz-transition: all .5s ease-out .5s;
       -ms-transition: all .5s ease-out .5s;
           transition: all .5s ease-out .5s;
-}
-.tile.correct{
-  opacity:.9;
 }

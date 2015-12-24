@@ -8,9 +8,6 @@ function getRandomInt(min, max) {
   return Math.floor(Math.random() * (max - min + 1)) + min;
 }
 
-function reject33(result){
-  return result == 33 ? getRandomInt(34, 254) : result;
-}
 function endGame(level, time){
   setTimeout(function(){
     $("#gui #visionquest").hide();
@@ -18,6 +15,7 @@ function endGame(level, time){
       url: '/vq/' + level.toString(),
       type: "put"
     });
+    $("#gui").removeClass("game-over");
   }, time);
 }
 
@@ -78,9 +76,10 @@ function initGame(){
       }
       $("#timer").html(cnt);
     } else{
+      $("#gui").addClass("game-over");
       $("#timer").html("0");
       clearInterval(interval);
-      endGame(level, 1200);
+      endGame(level, 3400);
     }
   }
 
@@ -94,29 +93,14 @@ function initGame(){
   }
 
   function getRandomColor(){
-     r = getRandomInt(1, 254);
-     g = getRandomInt(1, 254);
-     b = getRandomInt(1, 254);
-     r = reject33(r);
-     g = reject33(g);
+     r = getRandomInt(51, 254);
+     g = getRandomInt(51, 254);
+     b = getRandomInt(51, 254);
      return r+","+g+","+b;
   }
 
   function colorShift(c,amt){
-    if (c >= amt){
-      // console.log("c is "+c+", amt is: "+amt+". RESULT:"+(c-amt));
-      return c - amt;
-    }else{
-      var i;
-      for (i = amt; i > 1; i--){
-        // console.log("cycle "+c);
-        if(c >= i){
-          break;
-        }
-      }
-      // console.log("c is "+c+", amt should've been "+amt+". Is now "+i+". RESULT:"+(c-i));
-      return c - i;
-    }
+    return c - amt;
   }
 
   function shiftColor(c,amt){

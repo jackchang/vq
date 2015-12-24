@@ -1,0 +1,7 @@
+RAILS_ENV=production rake assets:precompile
+sudo service unicorn restart
+sudo service nginx reload
+
+
+RAILS_ENV=production bundle install --without development test
+RAILS_ENV=production rails c
