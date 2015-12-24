@@ -4,7 +4,7 @@ class VqController < ApplicationController
       ref = params[:ref].tr(VRecord::ENC, VRecord::DEC).split(':')[1]
       if ref.is_number?
         @ref = ref
-        @level = ref.to_i + 1
+        @level = ref.to_i
         @record = VRecord.find_by_level(@level)
         @position = find_position(@level)
         @groups = group_percentage
@@ -13,11 +13,11 @@ class VqController < ApplicationController
   end
 
   def update
-    @level = params[:id]
+    @level = params[:id].to_i - 1
     @record = VRecord.find_by_level(@level)
     @record.count += 1
     @record.save!
-    @position = find_position(params[:id])
+    @position = find_position(@level)
     @groups = group_percentage
   end
 
@@ -29,8 +29,8 @@ private
 
   def find_position level
     total = VRecord.pluck(:count).sum
-    pos = VRecord.where('level > ?', level.to_i).pluck(:count).sum
-    percent = (pos/total.to_f)* 100
+    pos = VRecord.where('level > ?', level.to_i).pluck(:count).sum + 1
+    percent = ((pos-1)/total.to_f)* 100
     pos = pos==0 ? 1 : pos
     group = case level.to_i
       when 0..9 then 1
