@@ -1,4 +1,6 @@
 $('#gui #intro').hide();
 $('#gui #visionquest').hide();
 $('#gui #result').html("<%=j render(partial: 'results').html_safe %>").show();
+
 FB.XFBML.parse($("#fb-share-container")[0]);
+twttr.widgets.load();
