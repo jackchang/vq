@@ -2,6 +2,9 @@
   <div id="intro" style="<%= @ref.blank? ? '' : 'display:none' %>">
    <%= render 'intro' %>
   </div>
+  <div id="result" style="<%= @ref.blank? ? 'display:none' : '' %>">
+    <%= render 'results' %>
+  </div>
   <div class="medium-4 medium-push-4 columns">
     <div class="medium-4 medium-pull-4 columns"><!-- left side: ads can go here --></div>
     <div class="medium-4 columns"><!-- right side: ads can go here --></div>
