@@ -21,6 +21,9 @@ class VqController < ApplicationController
     @groups = group_percentage
   end
 
+  def play
+
+  end
 
 private
   def record_params

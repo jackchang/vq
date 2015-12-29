@@ -53,6 +53,7 @@ function initGame(){
     }else{
       $("#level").html("WOW!");
       $("#counter").addClass("hide");
+      clearInterval(interval);
       endGame(level, 1200);
     }
   }
@@ -181,7 +182,6 @@ function initGame(){
 }
 
 function vqStart() {
-  $("#gui #intro").hide();
   $("#gui #visionquest").show();
   $("#gui #result").hide();
   initGame();  
