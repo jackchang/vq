@@ -1,0 +1,1 @@
+GROUP = {1 => "How many fingers am I holding up?", 2 => "Proficient oncoming car avoider!", 3 => "Certified House Painter", 4 => "Hue Hefner", 5 => "Art Students Everywhere Weep", 6 => "P-P-Picasso, Baby!"}

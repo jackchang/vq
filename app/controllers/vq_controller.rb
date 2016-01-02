@@ -1,7 +1,9 @@
 class VqController < ApplicationController
+  include ApplicationHelper
+  
   def index
     if params[:ref].present?
-      ref = params[:ref].tr(VRecord::ENC, VRecord::DEC).split(':')[1]
+      ref = decode_token params[:ref]
       if ref.is_number?
         @ref = ref
         @level = ref.to_i
