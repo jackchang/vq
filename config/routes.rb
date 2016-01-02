@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :vq do
     collection do
       get 'play'
+      get 'stats'
     end
   end
 

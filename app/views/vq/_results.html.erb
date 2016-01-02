@@ -1,4 +1,4 @@
-  <% unless @record.nil? %>
+<% unless @record.nil? %>
   <div id="score-board" class="row">
     <div id="counter" class="small-6 columns"></div>
   </div>
@@ -25,45 +25,12 @@
         </a>
       <% end %>
       <br/>
-      <div class="row">
-        <div id="fb-share-container">
-          <div class="fb-share-button small-4 columns" 
-            data-href="<%= root_url %>?ref=<%= get_share_token params[:id] %>" 
-            data-layout="button_count">
-          </div>
-          <div class="fb-like small-4 columns" 
-            data-href="<%= root_url %>"" 
-            data-layout="button_count" 
-            data-action="like" 
-            data-show-faces="false">
-          </div>
-          <div class="small-4 columns">
-            <a href="https://twitter.com/share" class="twitter-share-button"{count}>Tweet</a>
-          </div>
-        </div>
+      <div id="social-buttons" class="row">
+        <%= render 'social_buttons' %>
       </div>
-
+  
       <div id="results-table">
-        <div class="row">
-          <div class="columns">
-            <h3>
-              You're <%= @position[2] > 50 ? "at" : "in the top" %><strong> <%= number_with_precision(@position[2], :precision => 2) %>%</strong>!
-            </h3>
-          </div>
-        </div>
-        <% Hash[@groups.to_a.reverse].each do |k,v| %>
-          <div class="row group <%= @position[1] == k ? 'highlight' : '' %>">
-            <div class="small-3 columns">
-              <p><strong><%= VRecord::GROUP[k] %></strong></p>
-            </div>
-            <div class="small-6 columns">
-              <div class="bar" style="width:<%= v[1] %>%"></div>
-            </div>
-            <div class="small-3 columns">
-              <p class="group-population"><strong><%= number_with_delimiter(v[0]) %></strong> people</p>
-            </div>
-          </div>
-        <% end %>
+        <%= render 'stats' %>
       </div>
       <a id="logo" style="margin-left:10px;" class="text-center" href="<%= root_url %>"> 
          <%= render 'vq_logo' %>
@@ -72,4 +39,4 @@
   </div>      
   <div class="medium-3 medium-pull-6 columns"> <!-- left side: ads can go here --> </div>
   <div class="medium-3 columns"> <!-- right side: ads can go here --> </div>
-  <% end %>
+<% end %>

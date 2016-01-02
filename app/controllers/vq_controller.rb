@@ -22,7 +22,11 @@ class VqController < ApplicationController
   end
 
   def play
+  end
 
+  def stats
+    @groups = group_percentage
+    @position = [0, 9, 0]
   end
 
 private
@@ -34,7 +38,6 @@ private
     total = VRecord.pluck(:count).sum
     pos = VRecord.where('level > ?', level.to_i).pluck(:count).sum + 1
     percent = ((pos-1)/total.to_f)* 100
-    pos = pos==0 ? 1 : pos
     group = case level.to_i
       when 0..9 then 1
       when 10..19 then 2

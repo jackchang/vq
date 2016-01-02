@@ -1,0 +1,25 @@
+<div class="row">
+  <div class="columns">
+    <h3>
+      <% unless @position[0] == 0 %>
+        You're <%= @position[2] > 50 ? "at" : "in the top" %><strong> <%= number_with_precision(@position[2], :precision => 2) %>%</strong>!
+    </h3>
+      <% else %>
+        Current Stats
+      <% end %>
+  </div>
+</div>
+
+<% Hash[@groups.to_a.reverse].each do |k,v| %>
+  <div class="row group <%= @position[1] == k ? 'highlight' : '' %>">
+    <div class="small-3 columns">
+      <p><strong><%= VRecord::GROUP[k] %></strong></p>
+    </div>
+    <div class="small-6 columns">
+      <div class="bar" style="width:<%= v[1] %>%"></div>
+    </div>
+    <div class="small-3 columns">
+      <p class="group-population"><strong><%= number_with_delimiter(v[0]) %></strong> people</p>
+    </div>
+  </div>
+<% end %>
