@@ -53,9 +53,10 @@ private
 
   def group_percentage
     p = {}
-    VRecord.all.group_by(&:group).collect{|k,v| p[k] = v.sum(&:count)}  
-    max = p.max_by{|k,v| v}[1]
-    p.each{|k,v| p[k] = [v, v/max.to_f * 90]}.sort_by{|k,v| k}
+    records = VRecord.all.group_by(&:group)
+    records.each{|k,v| p[k] = [v.sum(&:count), v.max_by(&:updated_at).updated_at]}  
+    max = p.max_by{|k,v| v[0]}[1][0]
+    p.each{|k,v| p[k] = [v, v[0]/max.to_f * 90].flatten}.sort_by{|k,v| k}
   end
 
 end

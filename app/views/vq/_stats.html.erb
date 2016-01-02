@@ -16,10 +16,13 @@
       <p><strong><%= VRecord::GROUP[k] %></strong></p>
     </div>
     <div class="small-6 columns">
-      <div class="bar" style="width:<%= v[1] %>%"></div>
+      <div class="bar" style="width:<%= v[2] %>%"></div>
     </div>
     <div class="small-3 columns">
       <p class="group-population"><strong><%= number_with_delimiter(v[0]) %></strong> people</p>
+      <% if @position[0] == 0 %>
+        <p class="group-population" style="font-size:10px" >Updated at <strong><%= Time.at(v[1]).strftime('%Y/%m/%d %H:%M') %></strong></p>
+      <% end %>
     </div>
   </div>
 <% end %>
