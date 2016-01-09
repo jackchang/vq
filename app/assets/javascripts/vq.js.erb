@@ -188,11 +188,11 @@ function vqStart() {
 }
 
 $(document).ajaxSend(function(e, xhr) {
-  $("#spinner-container").show();
+  $("#spinner-container").removeClass('hide');
   var token = $("meta[name='csrf-token']").attr("content");
   xhr.setRequestHeader("X-CSRF-Token", token);
 });
 
 $(document).ajaxComplete(function(e, xhr) {
-  $("#spinner-container").hide();
+  $("#spinner-container").addClass('hide');
 });
