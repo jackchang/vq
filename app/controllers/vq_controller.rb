@@ -15,7 +15,7 @@ class VqController < ApplicationController
   end
 
   def update
-    @level = params[:id].to_i - 1
+    @level = params[:id].to_i
     @record = VRecord.find_by_level(@level)
     @record.count += 1
     @record.save!
@@ -32,9 +32,6 @@ class VqController < ApplicationController
   end
 
 private
-  def record_params
-    params.require(:v_record).permit(:count)
-  end
 
   def find_position level
     total = VRecord.pluck(:count).sum

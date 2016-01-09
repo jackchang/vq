@@ -54,7 +54,7 @@ function initGame(){
       $("#level").html("WOW!");
       $("#counter").addClass("hide");
       clearInterval(interval);
-      endGame(level+1, 1200);
+      endGame(level, 1200);
     }
   }
 
@@ -78,7 +78,7 @@ function initGame(){
       $("#gui").addClass("game-over");
       $("#timer").html("0");
       clearInterval(interval);
-      endGame(level, 3400);
+      endGame(level-1, 3400);
     }
   }
 
