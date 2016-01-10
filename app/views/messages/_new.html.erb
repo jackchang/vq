@@ -3,7 +3,7 @@
 </div>
 <%= form_for @message, url: contact_path, remote: true  do |f| %>
   <fieldset>
-  <legend><h5> Contact Us </h5></legend>
+  <legend><h6> Contact Us </h6></legend>
     <div class="field">
       <%= f.text_field :name, placeholder: "Your Name", required: true %>
     </div>
@@ -13,11 +13,11 @@
     </div>
     
     <div class="field">
-      <%= f.text_field :subject, size:40, placeholder: "Subject" %>
+      <%= f.text_field :subject, size:25, placeholder: "Subject" %>
     </div>
 
     <div class="field">
-      <%= f.text_area :content, cols:55, rows:8, placeholder: "Message", required: true %>
+      <%= f.text_area :content, cols:28, rows:8, placeholder: "Message", required: true %>
     </div>
     <div class="field" style="float: right">
       <%= f.submit "Send" %>
