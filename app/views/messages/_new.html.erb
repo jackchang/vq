@@ -1,0 +1,26 @@
+<div id="logo" style="padding:5px;margin-top:-10px;width:75px;background: #303050">
+<%= render 'vq/vq_logo' %>
+</div>
+<%= form_for @message, url: contact_path, remote: true  do |f| %>
+  <fieldset>
+  <legend><h5> Contact Us </h5></legend>
+    <div class="field">
+      <%= f.text_field :name, placeholder: "Your Name", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.email_field :email, placeholder: "Your Email", required: true %>
+    </div>
+    
+    <div class="field">
+      <%= f.text_field :subject, size:40, placeholder: "Subject" %>
+    </div>
+
+    <div class="field">
+      <%= f.text_area :content, cols:55, rows:8, placeholder: "Message", required: true %>
+    </div>
+    <div class="field" style="float: right">
+      <%= f.submit "Send" %>
+    </div>
+  </fieldset>
+<% end %>

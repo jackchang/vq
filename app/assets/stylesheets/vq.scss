@@ -18,8 +18,13 @@
      @-o-keyframes POP { 50% {     -ms-transform: scale(1.5); color:#ffc000; } }
         @keyframes POP { 50% {         transform: scale(1.5); color:#ffc000; } }
 
+.level-count{
+  margin-top:50px;
+  border:1px solid rgba(255, 0, 161, 0.2);
+}
+
 .group{
- padding-bottom:3px;
+  padding-bottom:3px;
 }
 
 .group p{
@@ -460,4 +465,13 @@ h5.blog-title{
      -moz-transition: all .5s ease-out .5s;
       -ms-transition: all .5s ease-out .5s;
           transition: all .5s ease-out .5s;
+}
+.close-button {
+    color: #8a8a8a;
+    cursor: pointer;
+    font-size: 1.5em;
+    line-height: 1;
+    position: absolute;
+    right: 1rem;
+    top: 0.1rem;
 }

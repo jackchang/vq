@@ -44,10 +44,17 @@
     </div>
     <%= yield %>
 
+    <div id="modal" class="reveal small" data-reveal data-close-on-click="false">
+      <div id="modal-content"></div>
+      <button class="close-button" data-close aria-label="Close reveal" type="button">
+        <span aria-hidden="true">&times;</span>
+      </button>
+    </div>
+
     <script>
       $(document).foundation();
     </script>
 
-    <%= render 'social_share' %>
+    <%= render 'vq/social_share' %>
   </body>
 </html>

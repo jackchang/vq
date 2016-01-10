@@ -13,7 +13,7 @@
 <% Hash[@groups.to_a.reverse].each do |k,v| %>
   <div class="row group <%= @position[1] == k ? 'highlight' : '' %>">
     <div class="small-3 columns">
-      <p><strong><%= VRecord::GROUP[k] %></strong></p>
+      <p><strong><%= GROUP[k] %></strong></p>
     </div>
     <div class="small-6 columns">
       <div class="bar" style="width:<%= v[2] %>%"></div>
