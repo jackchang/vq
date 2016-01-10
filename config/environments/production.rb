@@ -68,12 +68,13 @@ Rails.application.configure do
   ActionMailer::Base.smtp_settings = {
     :address              => "smtp.gmail.com",
     :port                 => 587,
-    :user_name            => '<%= ENV['EMAIL_ADDR'] %>',
-    :password             => '<%= ENV['EMAIL_PASSWORD'] %>',
+    :user_name            => ENV["EMAIL_ADDR"],
+    :password             => ENV["EMAIL_PASSWORD"],
     :authentication       => 'plain',
     :domain               => 'gmail.com',
     :enable_starttls_auto => true
   }
+  config.action_mailer.default_url_options = { :host => "infinitelunch.com" }
 
   # Enable locale fallbacks for I18n (makes lookups for any locale fall back to
   # the I18n.default_locale when a translation cannot be found).
