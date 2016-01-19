@@ -6,6 +6,8 @@
 
 * Configuration -- bundle install
 
+* copy config/database.yml.example to config/database.yml
+
 * Database creation -- rake db:create
 
 * Database initialization -- rake db:mgrate, rake db:seed
