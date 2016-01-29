@@ -3,13 +3,13 @@
 </div>
 <%= form_for @message, url: contact_path, remote: true  do |f| %>
   <fieldset>
-  <legend><h6> Contact Us </h6></legend>
+  <legend><h6> <%= t('contact_us.contacts.new.contact_us') %> </h6></legend>
     <div class="field">
-      <%= f.text_field :name, placeholder: "Your Name", required: true %>
+      <%= f.text_field :name, placeholder: t('contact_us.contacts.new.name') , required: true %>
     </div>
     
     <div class="field">
-      <%= f.email_field :email, placeholder: "Your Email", required: true %>
+      <%= f.email_field :email, placeholder: t('contact_us.contacts.new.email'), required: true %>
     </div>
     
     <div class="field">
@@ -17,10 +17,10 @@
     </div>
 
     <div class="field">
-      <%= f.text_area :content, cols:35, rows:8, placeholder: "Message", required: true %>
+      <%= f.text_area :content, cols:35, rows:8, placeholder: t('contact_us.contacts.new.message'), required: true %>
     </div>
     <div class="field" style="float: right">
-      <%= f.submit "Send" %>
+      <%= f.submit t('contact_us.contacts.new.submit') %>
     </div>
   </fieldset>
 <% end %>
