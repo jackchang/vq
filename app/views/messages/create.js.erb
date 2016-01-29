@@ -3,6 +3,6 @@
   $('#modal-content').html("<%= escape_javascript(render(partial:'new')).html_safe %>")
 <% else %>
   $('#modal').foundation('close');
-  alert("Thank you for contacting us");
+  alert("<%= t('contact_us.notices.success') %>");
 <% end %>
 
