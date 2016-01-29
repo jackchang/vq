@@ -6,12 +6,14 @@ class ApplicationController < ActionController::Base
 
   def set_locale
     I18n.locale = extract_locale_from_accept_language_header
-    #logger.debug "* Locale set to '#{I18n.locale}'"
+    logger.debug "#{request.env['HTTP_ACCEPT_LANGUAGE'].inspect}"
+    logger.debug "regex:#{extract_locale_from_accept_language_header}"
+    logger.debug "* Locale set to '#{I18n.locale}'"
   end
  
   private
 
   def extract_locale_from_accept_language_header
-    request.env['HTTP_ACCEPT_LANGUAGE'].scan(/^[a-z]{2}/).first
+    request.env['HTTP_ACCEPT_LANGUAGE'].match(/[a-z]{2}(-[A-Z]{2})?/).to_s
   end
 end
