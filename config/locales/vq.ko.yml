@@ -14,7 +14,7 @@ ko:
         email: "이메일"
         message: "전언"
         name: "전체 이름"
-        subject: "件名"
+        subject: "테마"
         submit: "제출할"
       new_formtastic:
         <<: *new
