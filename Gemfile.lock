@@ -1,3 +1,11 @@
+GIT
+  remote: git://github.com/cubus/jquery-sparkline-rails.git
+  revision: c5b531f51e3e734710c7561b06c2c829107f9b38
+  specs:
+    jquery-sparkline-rails (2.1.1)
+      jquery-rails
+      rails (>= 3.2.2)
+
 GEM
   remote: https://rubygems.org/
   specs:
@@ -40,7 +48,6 @@ GEM
     arel (6.0.3)
     binding_of_caller (0.7.2)
       debug_inspector (>= 0.0.1)
-    browser (1.1.0)
     builder (3.2.2)
     byebug (8.2.1)
     coffee-rails (4.1.1)
@@ -124,7 +131,6 @@ GEM
     sdoc (0.4.1)
       json (~> 1.7, >= 1.7.7)
       rdoc (~> 4.0)
-    spring (1.6.1)
     sprockets (3.5.2)
       concurrent-ruby (~> 1.0)
       rack (> 1, < 3)
@@ -154,18 +160,17 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  browser
   byebug
   coffee-rails (~> 4.1.0)
   jbuilder (~> 2.0)
   jquery-rails
+  jquery-sparkline-rails!
   jquery-ui-rails
   letter_opener
   pg
   rails (= 4.2.5)
   sass-rails (~> 5.0)
   sdoc (~> 0.4.0)
-  spring
   uglifier (>= 1.3.0)
   unicorn
   web-console (~> 2.0)

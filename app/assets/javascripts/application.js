@@ -13,5 +13,6 @@
 //= require jquery
 //= require jquery_ujs
 //= require jquery-ui
+//= require jquery.sparkline
 // require turbolinks
 //= require_tree .

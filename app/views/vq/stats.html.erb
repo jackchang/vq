@@ -3,20 +3,29 @@
     <div id="results-table">
       <%= render 'stats' %>
     </div>
-      <a id="logo" style="margin-left:10px;" class="text-center" href="<%= root_url %>">
-         <%= render 'vq_logo' %>
-      </a>
+    <div class="text-center">
+      <span class="sparkline"><!-- <%= @counts %> --></span>
+    <div>
+    <a id="logo" style="margin-left:10px;" class="text-center" href="<%= root_url %>">
+       <%= render 'vq_logo' %>
+    </a>
   </div>
 </div>
 
+<script>
+  var levels = $.map(Array(51),function(val, i) { return i; })
+  $('.sparkline').sparkline('html', {type:'bar', height:50, barSpacing:2, barWidth:3, tooltipPrefix:'count: '});
+  $('.sparkline').sparkline(levels, {composite:true, height:50, lineColor:'rgba(0,0,0,0)', fillColor:false, spotColor:false, minSpotColor:false, maxSpotColor:false, highlightLineColor:null, highlightSpotColor:null,  tooltipPrefix:'level: '} );
+</script>
+
 <% if Rails.env == 'production' %>
-<!-- Google Tag Manager -->
-<noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHH58V"
-height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
-<script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
-new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
-j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
-'//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
-})(window,document,'script','dataLayer','GTM-PHH58V');</script>
-<!-- End Google Tag Manager -->
+  <!-- Google Tag Manager -->
+  <noscript><iframe src="//www.googletagmanager.com/ns.html?id=GTM-PHH58V"
+  height="0" width="0" style="display:none;visibility:hidden"></iframe></noscript>
+  <script>(function(w,d,s,l,i){w[l]=w[l]||[];w[l].push({'gtm.start':
+  new Date().getTime(),event:'gtm.js'});var f=d.getElementsByTagName(s)[0],
+  j=d.createElement(s),dl=l!='dataLayer'?'&l='+l:'';j.async=true;j.src=
+  '//www.googletagmanager.com/gtm.js?id='+i+dl;f.parentNode.insertBefore(j,f);
+  })(window,document,'script','dataLayer','GTM-PHH58V');</script>
+  <!-- End Google Tag Manager -->
 <% end %>

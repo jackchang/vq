@@ -29,6 +29,8 @@ class VqController < ApplicationController
   def stats
     @groups = group_percentage
     @position = [0, 9, 0]
+    #@chart = VRecord.pluck(:level, :count).sort.map{|x|x.join(":")}.join(",")
+    @counts = VRecord.pluck(:level, :count).sort.map{|x| x[1]}.join(",")
   end
 
 private
