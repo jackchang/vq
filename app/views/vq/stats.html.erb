@@ -15,7 +15,7 @@
 <script>
   var levels = $.map(Array(51),function(val, i) { return i; })
   $('.sparkline').sparkline('html', {type:'bar', height:50, barSpacing:2, barWidth:3, tooltipPrefix:'count: '});
-  $('.sparkline').sparkline(levels, {composite:true, height:50, lineColor:'rgba(0,0,0,0)', fillColor:false, spotColor:false, minSpotColor:false, maxSpotColor:false, highlightLineColor:null, highlightSpotColor:null,  tooltipPrefix:'level: '} );
+  $('.sparkline').sparkline(levels, {composite:true, type:'bar', barColor:'rgba(0,0,0,0)', tooltipPrefix:'level: '} );
 </script>
 
 <% if Rails.env == 'production' %>
